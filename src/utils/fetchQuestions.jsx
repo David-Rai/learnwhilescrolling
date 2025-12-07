@@ -13,7 +13,6 @@ export default async function fetchQuestions() {
 
   const selectedLesson = lessons.find(l => l.name === currentLesson.name)
 
-// const res=await  checkUser()
 
   //fetching for selected category
   let query = supabase

@@ -9,7 +9,7 @@ import { useScrollLimit } from "./context/store";
 
 const Layout = () => {
   const { scrollLimit } = useScrollLimit();
-
+  
   useEffect(() => {
     checkLimit();
   }, []);

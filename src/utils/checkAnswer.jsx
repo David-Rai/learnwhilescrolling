@@ -6,9 +6,10 @@ import useHomeStore, { useScrollLimit } from "../context/store";
 //Handling Answering
 export const checkAnswer = async (q, opt) => {
   const { answers = [], setAnswers, user } = useHomeStore.getState();
-  const {scrollLimit,updateScrollLimit}=useScrollLimit.getState()
+  const { scrollLimit, updateScrollLimit } = useScrollLimit.getState();
 
-  if (answers.find((ans) => ans.id === q.id)) return; // prevent re-clicking
+  // prevent re-clicking
+  if (answers.find((ans) => ans.id === q.id)) return;
 
   const isCorrect = q.a === opt;
 
@@ -18,14 +19,23 @@ export const checkAnswer = async (q, opt) => {
   //Checking if all answers are answered in this category lesson
   checkIsAnsweredAll();
 
-  
-  //checking if user is loggedin
+  //For scrollLimits
   if (!user) {
-    checkLimit()
-    const state=scrollLimit.scrollCount >= 5 ? true : false
-    const count=scrollLimit.scrollCount  + 1
-    updateScrollLimit({shouldLimit:state,scrollCount:count})
+    checkLimit();
+    const state = scrollLimit.scrollCount >= 5 ? true : false;
+    const count = scrollLimit.scrollCount + 1;
+    updateScrollLimit({ shouldLimit: state, scrollCount: count });
   }
+
+  // //Increase the streak
+  // if (user) {
+  //   const updateStreak = async () => {
+  //     //1(if not yesterday nor today)
+  //     const res = await supabase.from("streaks").eq("user_id", user.id);
+  //     console.log(res)
+  //   };
+  //   updateStreak()
+  // }
 
   //Increase the points and insert into user answers
   if (user?.id) {

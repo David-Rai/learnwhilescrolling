@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import supabase from "../config/supabase.js";
 import getQuestions from "../utils/getQuestions.jsx";
 import { observe } from "../utils/observe.jsx";
 import filterAnsweredQuestions from "../utils/filterAnsweredQuestions.jsx";
@@ -27,10 +28,11 @@ const Home = () => {
   const isAnsweredAll = currentSelectedLesson?.isAnsweredAll || false;
   const currentQuestions = currentSelectedLesson?.questions || [];
   const maxReached = currentSelectedLesson?.maxReached || false;
+  const {user}=useHomeStore()
 
   //Initail setups
   useEffect(() => {
-    //***checking if user exist and provider is google
+    //***sing if user exist and provider is google
     insertUserIfFirstLogin(); //fix this shit
 
     //***checking if category selected
@@ -45,6 +47,8 @@ const Home = () => {
       getQuestions();
       return;
     }
+
+
   }, []);
 
   //Stoping scrolling on hint container toggle

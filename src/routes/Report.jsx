@@ -21,10 +21,10 @@ const Report = () => {
   useEffect(() => {
     checkUser().then((result) => {
       if (result.exist) {
-        console.log("user valid to report",result.user);
+        // console.log("user valid to report",result.user);
         return setUser(result.user);
       }
-      console.log("user is not valid to report");
+      // console.log("user is not valid to report");
       navigate("/signin");
     });
   }, []);
@@ -51,7 +51,7 @@ const Report = () => {
   };
 
   return (
-    <main className="min-h-screen w-full bg-gradient-to-br from-bg via-bg to-primary/5 flex flex-col items-center justify-center gap-8 px-4 py-6 sm:py-10 custom-scrollbar relative overflow-x-hidden overflow-y-auto">
+    <main className="h-[100dvh] w-full bg-gradient-to-br from-bg via-bg to-primary/5 flex flex-col items-center justify-center gap-8 px-4 py-6 sm:py-10 custom-scrollbar relative overflow-x-hidden overflow-y-auto">
       {/* Animated background elements */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl animate-[float_6s_ease-in-out_infinite]"></div>
       <div className="absolute bottom-20 right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]"></div>

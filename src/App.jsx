@@ -1,85 +1,84 @@
-import React from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router'
-import './index.css'
-import Signin from './routes/auth/Signin.jsx'
-import Profile from './routes/Profile.jsx'
-import Home from './routes/Home'
-import Explore from './routes/Explore'
-import AddQuestion from './routes/admins/AddQuestion'
-import { ToastContainer } from 'react-toastify'
-import Leaderboard from './components/Leaderboard.jsx'
-import Signup from './routes/auth/Signup.jsx'
-import Member from './routes/admins/Member'
-import Dashboard from './routes/admins/Dashboard.jsx'
-import Report from './routes/Report'
-import GotoProfile from './routes/GotoProfile'
-import Root from './Root'
-import Feedback from './routes/Feedback'
-import Reviews from './routes/Reviews'
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router";
+import "./index.css";
+import Signin from "./routes/auth/Signin.jsx";
+import Profile from "./routes/Profile.jsx";
+import Home from "./routes/Home";
+import Explore from "./routes/Explore";
+import AddQuestion from "./routes/admins/AddQuestion";
+import { ToastContainer } from "react-toastify";
+import Leaderboard from "./components/Leaderboard.jsx";
+import Signup from "./routes/auth/Signup.jsx";
+import Member from "./routes/admins/Member";
+import Dashboard from "./routes/admins/Dashboard.jsx";
+import Report from "./routes/Report";
+import GotoProfile from "./routes/GotoProfile";
+import Root from "./Root";
+import Feedback from "./routes/Feedback";
+import Reviews from "./routes/Reviews";
 
 //Public routes
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Root />,
     children: [
       {
-        path: '/',
-        element: <Home />
+        path: "/",
+        element: <Home />,
       },
       {
-        path: '/signin',
-        element: <Signin />
+        path: "/signin",
+        element: <Signin />,
       },
       {
-        path: '/signup',
-        element: <Signup />
+        path: "/signup",
+        element: <Signup />,
       },
       {
-        path: '/profile/:user_id',
-        element: <Profile />
+        path: "/profile/:user_id",
+        element: <Profile />,
       },
       {
-        path: '/report',
-        element: <Report />
+        path: "/report",
+        element: <Report />,
       },
       {
-        path: '/feedback',
-        element: <Feedback />
+        path: "/feedback",
+        element: <Feedback />,
       },
       {
-        path: '/reviews',
-        element: <Reviews />
-      }
+        path: "/reviews",
+        element: <Reviews />,
+      },
+      {
+        path: "/explore",
+        element: <Explore />,
+      },
       ,
       {
-        path: '/explore',
-        element: <Explore />
-      }, ,
-      {
-        path: '/leaderboard',
-        element: <Leaderboard />
+        path: "/leaderboard",
+        element: <Leaderboard />,
       },
+      // {
+      //   path: '/dashboard',
+      //   element: <Dashboard />
+      // },
       {
-        path: '/dashboard',
-        element: <Dashboard />
-      }, {
-        path: '/goto_profile',
-        element: <GotoProfile />
-      }
+        path: "/goto_profile",
+        element: <GotoProfile />,
+      },
       // , {
       //   path: '/member',
       //   element: <Member />
       // }
-      ,
       {
-        path: '/addQuestion',
-        element: <AddQuestion />
-      }
-    ]
-  }
-])
-
+        path: "/addQuestion",
+        element: <AddQuestion />,
+      },
+    ],
+  },
+]);
 
 const App = () => {
   return (
@@ -87,7 +86,7 @@ const App = () => {
       <RouterProvider router={router} />
       <ToastContainer />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

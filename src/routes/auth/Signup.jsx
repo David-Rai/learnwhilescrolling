@@ -112,7 +112,7 @@ const Signup = () => {
   }
 
   return (
-
+    
     <main className="h-full bg-bg flex flex-col items-center justify-center overflow-hidden md:flex-row md:justify-start">
 
       <main className='w-full h-full md:h-full md:w-screen md:flex md:items-center md:justify-center'>
