@@ -14,8 +14,8 @@ const checkLimit = async () => {
   const scrollLimitData = JSON.parse(data);
 
   if (scrollLimitData) {
-    if (scrollLimitData.scrollCount >= 4)
-      return updateScrollLimit({ shouldLimit: true, scrollCount: 4 });
+    if (scrollLimitData.scrollCount >= 5)
+      return updateScrollLimit({ shouldLimit: true, scrollCount: 5 });
     return updateScrollLimit(scrollLimitData);
   }
   return updateScrollLimit({ shouldLimit: false, scrollCount: 0 });

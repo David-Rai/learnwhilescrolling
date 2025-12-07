@@ -22,7 +22,7 @@ export const checkAnswer = async (q, opt) => {
   //checking if user is loggedin
   if (!user) {
     checkLimit()
-    const state=scrollLimit.scrollCount >= 4 ? true : false
+    const state=scrollLimit.scrollCount >= 5 ? true : false
     const count=scrollLimit.scrollCount  + 1
     updateScrollLimit({shouldLimit:state,scrollCount:count})
   }
