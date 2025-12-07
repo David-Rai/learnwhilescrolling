@@ -41,7 +41,7 @@ const Card = ({ item }) => (
 
 
   return (
-    <main className="min-h-screen w-full bg-bg text-text overflow-y-scroll custom-scrollbar p-4 flex flex-col items-center">
+    <main className="h-[100dvh] w-full bg-bg text-text overflow-y-scroll custom-scrollbar p-4 flex flex-col items-center">
       <h1 className="text-2xl font-bold mb-8">Reviews & Reports</h1>
 
       <div className="flex flex-wrap justify-center mb-10">
