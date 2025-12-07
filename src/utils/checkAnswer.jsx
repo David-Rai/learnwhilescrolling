@@ -1,4 +1,5 @@
 import supabase from "../config/supabase";
+import updateStreak from "./supabase/updateStreak";
 import checkLimit from "./checkLimit";
 import checkIsAnsweredAll from "./checkIsAnsweredAll";
 import useHomeStore, { useScrollLimit } from "../context/store";
@@ -26,16 +27,6 @@ export const checkAnswer = async (q, opt) => {
     const count = scrollLimit.scrollCount + 1;
     updateScrollLimit({ shouldLimit: state, scrollCount: count });
   }
-
-  // //Increase the streak
-  // if (user) {
-  //   const updateStreak = async () => {
-  //     //1(if not yesterday nor today)
-  //     const res = await supabase.from("streaks").eq("user_id", user.id);
-  //     console.log(res)
-  //   };
-  //   updateStreak()
-  // }
 
   //Increase the points and insert into user answers
   if (user?.id) {

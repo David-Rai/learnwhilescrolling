@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
-import supabase from "../config/supabase.js";
 import getQuestions from "../utils/getQuestions.jsx";
 import { observe } from "../utils/observe.jsx";
 import filterAnsweredQuestions from "../utils/filterAnsweredQuestions.jsx";
@@ -12,6 +11,7 @@ import useHomeStore from "../context/store.js";
 import insertUserIfFirstLogin from "../utils/insertUserIfNewUser.jsx";
 import CompletedAll from "../components/CompletedAll.jsx";
 import SelectACategory from "../components/SelectACategory.jsx";
+import updateStreak from "../utils/supabase/updateStreak.jsx";
 
 const Home = () => {
   const lessons = useHomeStore((state) => state.lessons);
@@ -47,6 +47,8 @@ const Home = () => {
       getQuestions();
       return;
     }
+
+      updateStreak()
 
 
   }, []);

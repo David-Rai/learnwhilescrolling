@@ -8,11 +8,6 @@ const checkLimit = async () => {
   const res = await checkUser();
   const { updateScrollLimit } = useScrollLimit.getState();
 
-  //Increase the streak
-  if (res.exist) {
-    updateStreak();
-  }
-
   //checking if user is loggedin
   if (res.exist)
     return updateScrollLimit({ shouldLimit: false, scrollCount: 0 });

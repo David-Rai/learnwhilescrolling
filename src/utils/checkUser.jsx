@@ -3,8 +3,13 @@ import useHomeStore from "../context/store";
 
 // Accept setUser as a parameter
 export async function checkUser() {
+  const { user, setUser } = useHomeStore.getState();
+
+  if (user) {
+    return { user, exist: true };
+  }
+  
   const { data, error } = await supabase.auth.getUser();
-  const {setUser}=useHomeStore.getState()
 
   if (error) {
     console.log("Error fetching user:", error);
@@ -14,9 +19,9 @@ export async function checkUser() {
   if (data.user) {
     setUser(data.user); // update user in context
     // console.log("User exists");
-    return {user:data.user,exist:true}
+    return { user: data.user, exist: true };
   } else {
     // console.log("User does not exist");
-    return {exist:false}
+    return { exist: false };
   }
 }

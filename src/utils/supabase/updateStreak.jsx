@@ -1,5 +1,6 @@
 import supabase from "../../config/supabase";
 import useHomeStore from "../../context/store";
+import { checkUser } from "../checkUser";
 
 //Fomates dates to 2023-12-2 format
 const formatDate = (date) => {
@@ -8,6 +9,8 @@ const formatDate = (date) => {
 
 //Updating the Streak
 const updateStreak = async () => {
+  const res = await checkUser();
+  if(!res.exist) return
   const { user } = useHomeStore.getState();
   const user_id = user.id;
   const date = new Date();
@@ -17,7 +20,6 @@ const updateStreak = async () => {
 
   //Checking if already updated the streak
   const lastUpdated = localStorage.getItem("streak_last_updated");
-  console.log(lastUpdated);
   if (lastUpdated === today_date) {
     return console.log("already updated the streak today");
   } else {
