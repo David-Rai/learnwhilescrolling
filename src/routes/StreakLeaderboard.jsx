@@ -21,7 +21,7 @@ const StreakLeaderboard = () => {
               to={l.to}
               end
               className={({ isActive }) =>
-                `px-6 py-3 ${
+                `px-6 py-3 text-gray-300 ${
                   isActive
                     ? "bg-bg rounded-full"
                     : ""
