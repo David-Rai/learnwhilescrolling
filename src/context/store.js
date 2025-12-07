@@ -9,7 +9,7 @@ const useHomeStore = create((set) => ({
   setCategories: (c) => set({ categories: c }),
 
   // isIntroDone: localStorage.getItem("isIntroDone") === "true",
-  isIntroDone:true,
+  isIntroDone: true,
   setIsIntroDone: (t) =>
     set(() => {
       localStorage.setItem("isIntroDone", t);
@@ -136,7 +136,6 @@ export const useAdminStore = create((set) => ({
   setIsAdmin: (v) => set({ isAdmin: v }),
 }));
 
-
 //******MEMBER STORE******* */
 export const useMemberStore = create((set) => ({
   //Admin data
@@ -155,14 +154,28 @@ export const useMemberStore = create((set) => ({
 }));
 
 //****CLASS STORE**** */
-export const useClassStore=create((set)=>({
-  allClasses:[],
-  setClasses:(nc)=> set({allClasses:nc}),
-  currentClass:{
-    name:null,
-    isSelected:false,
-    categories:[]
+export const useClassStore = create((set) => ({
+  allClasses: [],
+  setClasses: (nc) => set({ allClasses: nc }),
+  currentClass: {
+    name: null,
+    isSelected: false,
+    categories: [],
   },
-  setCurrentClass:(n)=> set({currentClass:n})
-}))
+  setCurrentClass: (n) => set({ currentClass: n }),
+}));
 export default useHomeStore;
+
+//******Limit on scroll***** */
+export const useScrollLimit = create((set) => ({
+  scrollLimit: {
+    shouldLimit:false,
+    scrollCount:0
+  },
+
+  updateScrollLimit: (n) =>
+    set(() => {
+      localStorage.setItem("scrollLimit", JSON.stringify(n));
+      return { scrollLimit: n };
+    }),
+}));

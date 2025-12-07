@@ -112,7 +112,7 @@ const Signup = () => {
   }
 
   return (
-    
+
     <main className="h-full bg-bg flex flex-col items-center justify-center overflow-hidden md:flex-row md:justify-start">
 
       <main className='w-full h-full md:h-full md:w-screen md:flex md:items-center md:justify-center'>
@@ -127,7 +127,7 @@ const Signup = () => {
               bg-clip-text text-transparent mb-2">
                   Learnwhilescrolling
                 </h1>
-                <p className="text-gray-300 text-sm">Sign up to start your learning journey</p>
+                <p className="text-gray-300 text-sm">Sign up to scroll infinite forever</p>
               </div>
 
               {/* Form */}

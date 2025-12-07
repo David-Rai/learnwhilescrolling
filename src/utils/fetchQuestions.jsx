@@ -11,20 +11,9 @@ export default async function fetchQuestions() {
     updateLessonQuestions
   } = useHomeStore.getState()
 
-  const { setUser } = useHomeStore.getState()
-  const { data: { user } } = await supabase.auth.getUser()
   const selectedLesson = lessons.find(l => l.name === currentLesson.name)
-  let isUser = false//no useState cause this is not react components
 
-
-  if (user?.id) {
-    setUser(user)
-    // console.log("user existed")
-    isUser = true
-  } else {
-    // console.log("new user")
-    isUser = false
-  }
+// const res=await  checkUser()
 
   //fetching for selected category
   let query = supabase

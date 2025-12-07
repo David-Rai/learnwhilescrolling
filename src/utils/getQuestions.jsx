@@ -10,7 +10,8 @@ export default async function getQuestions() {
 
     const selectedLesson = lessons.find(l => l.name === currentLesson.name)
 
-    if (selectedLesson?.questions.length > 0) return console.log("no intial fetch questions")
+    //if yes already fetch questions for initial
+    if (selectedLesson?.questions.length > 0) return console.log("no initial fetch questions")
 
     //fetching questions
     fetchQuestions()

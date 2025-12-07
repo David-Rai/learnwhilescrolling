@@ -1,16 +1,23 @@
-import React from 'react';
-import { Outlet } from 'react-router';
-import { ToastContainer } from 'react-toastify'
-import IntroPopUp from './components/IntroPopup';
-import Sidebar from './components/Sidebar';
-import BottomNav from './components/BottomNav';
-import useHomeStore from './context/store';
+import React, { useEffect } from "react";
+import checkLimit from "./utils/checkLimit";
+import Signup from "./routes/auth/Signup";
+import { Outlet } from "react-router";
+import { ToastContainer } from "react-toastify";
+import Sidebar from "./components/Sidebar";
+import BottomNav from "./components/BottomNav";
+import { useScrollLimit } from "./context/store";
 
 const Layout = () => {
-  const isIntroDone = useHomeStore(state => state.isIntroDone);
+  const { scrollLimit } = useScrollLimit();
 
-  return !isIntroDone ? (
-    <IntroPopUp />
+  useEffect(() => {
+    checkLimit();
+  }, []);
+
+  return scrollLimit.shouldLimit ? (
+    <div className="h-[100dvh]">
+      <Signup />
+    </div>
   ) : (
     <div className="h-[100dvh] w-full bg-bg md:flex md:flex-row rootLayout">
       <Sidebar />

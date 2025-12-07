@@ -60,7 +60,6 @@ const router = createBrowserRouter([
         path: '/leaderboard',
         element: <Leaderboard />
       },
-
       {
         path: '/dashboard',
         element: <Dashboard />

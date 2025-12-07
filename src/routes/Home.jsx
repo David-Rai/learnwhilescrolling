@@ -35,6 +35,7 @@ const Home = () => {
 
     //***checking if category selected
     if (currentCategory.isSelected && currentLesson.isSelected) {
+    
       // checking if answered
       if (answers.length > 0) {
         filterAnsweredQuestions(currentQuestions);
