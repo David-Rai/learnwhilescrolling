@@ -16,6 +16,9 @@ import GotoProfile from "./routes/GotoProfile";
 import Root from "./Root";
 import Feedback from "./routes/Feedback";
 import Reviews from "./routes/Reviews";
+import StreakLeaderboard from "./routes/StreakLeaderboard";
+import Streak from "./routes/Streak";
+import { Navigate } from "react-router";
 
 //Public routes
 const router = createBrowserRouter([
@@ -57,21 +60,28 @@ const router = createBrowserRouter([
       },
       ,
       {
-        path: "/leaderboard",
-        element: <Leaderboard />,
+        path: "/streakleaderboard",
+        element: <StreakLeaderboard />,
+        children:[
+          {
+            index:true,
+            element:<Navigate to="leaderboard" replace/>
+          },
+          {
+            path:'streak',
+            element:<Streak />
+          },
+          {
+            path:'leaderboard',
+            element:<Leaderboard />
+            
+          }
+        ]
       },
-      // {
-      //   path: '/dashboard',
-      //   element: <Dashboard />
-      // },
       {
         path: "/goto_profile",
         element: <GotoProfile />,
       },
-      // , {
-      //   path: '/member',
-      //   element: <Member />
-      // }
       {
         path: "/addQuestion",
         element: <AddQuestion />,

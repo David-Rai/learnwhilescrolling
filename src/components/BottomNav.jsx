@@ -58,10 +58,10 @@ const BottomNav = () => {
                 {/* Progress */}
                 <button
                     onClick={() => {
-                        setActiveTab("leaderboard")
-                        navigate("/leaderboard")
+                        setActiveTab("streakleaderboard")
+                        navigate("/streakleaderboard")
                     }}
-                    className={`flex flex-col cursor-pointer items-center py-2 px-3 rounded-lg transition-colors ${activeTab === "leaderboard"
+                    className={`flex flex-col cursor-pointer items-center py-2 px-3 rounded-lg transition-colors ${activeTab === "streakleaderboard"
                         ? "text-primary"
                         : "text-gray-400 hover:text-white"
                         }`}

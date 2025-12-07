@@ -61,22 +61,6 @@ const Leaderboard = () => {
   return (
   <main className="h-full bg-bg text-text md:flex md:pb-0">
   <div className="h-full md:h-full pb-6 overflow-x-hidden custom-scrollbar w-full">
-    {/* Header */}
-    <header className="bg-secondary shadow-lg py-6 md:py-8 px-4 mb-6">
-      <div className="max-w-4xl mx-auto text-center">
-        <div className="flex items-center justify-center gap-3 mb-3">
-          <div className="p-3 bg-bg rounded-full shadow-xl border-b-4 border-yellow-600">
-            <Trophy className="w-8 h-8 md:w-10 md:h-10 text-yellow-400" />
-          </div>
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-yellow-400 drop-shadow-lg">
-            Leaderboard
-          </h1>
-        </div>
-        <p className="text-sm md:text-base text-gray-300 font-medium">
-          Top performers this season
-        </p>
-      </div>
-  </header>
 
     {/* Leaders List */}
     <section className="px-4 mb-6">
@@ -92,7 +76,7 @@ const Leaderboard = () => {
     </section>
 
     {/* Load More Button */}
-    <div className="px-4 pb-4">
+    <div className="loadmorebutton px-4 pb-4">
       <button
         onClick={handleRenderMore}
         className="w-full max-w-4xl mx-auto py-3 px-6 bg-secondary hover:bg-opacity-80 text-white font-medium rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg"
@@ -102,6 +86,7 @@ const Leaderboard = () => {
       </button>
     </div>
   </div>
+
 </main>
   );
 };
