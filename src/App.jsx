@@ -65,7 +65,7 @@ const router = createBrowserRouter([
         children:[
           {
             index:true,
-            element:<Navigate to="leaderboard" replace/>
+            element:<Navigate to="streak" replace/>
           },
           {
             path:'streak',

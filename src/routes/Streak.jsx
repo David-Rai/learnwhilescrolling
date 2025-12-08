@@ -61,14 +61,14 @@ const Streak = () => {
           <h1 className="text-5xl font-bold transition-transform duration-300">
             {streak?.streak_count || 0}
           </h1>
-          <p className="text-base font-medium">Current Streak!</p>
+          <p className="text-gray-200 font-medium">Current Streak!</p>
         </div>
       </section>
 
       {/* Bottom section */}
       <section className="w-full flex items-center justify-center px-6">
         <div className="flex flex-col items-center w-full md:w-1/2 justify-center py-4 bg-secondary rounded-md">
-          <h1 className="text-black font-semibold">Todays stats</h1>
+          <p className="text-gray-200 pb-2">Todays stats</p>
 
           <section className="flex gap-4 bg-bg p-4 rounded-md">
             <div className="flex flex-col items-center">

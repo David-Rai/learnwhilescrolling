@@ -59,7 +59,7 @@ const Leaderboard = () => {
   };
 
   return (
-  <main className="h-full bg-bg text-text md:flex md:pb-0">
+  <main className="h-full bg-bg text-text md:flex md:pb-0 w-full">
   <div className="h-full md:h-full pb-6 overflow-x-hidden custom-scrollbar w-full">
 
     {/* Leaders List */}
