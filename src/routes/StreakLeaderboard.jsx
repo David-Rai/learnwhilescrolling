@@ -10,10 +10,10 @@ const links = [
 const StreakLeaderboard = () => {
   return (
     <>
-      <main className=" bg-bg h-[calc(100%-80px)] bg-bg text-text flex flex-col">
+      <main className=" bg-bg h-[calc(100%-80px)] bg-bg text-text flex flex-col items-center">
         <header
           className="flex gap-4 py-2 mx-2 my-4 items-center justify-evenly
-        rounded-full bg-secondary"
+            rounded-full bg-secondary md:w-1/2"
         >
           {links.map((l) => (
             <NavLink
