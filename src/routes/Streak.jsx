@@ -5,11 +5,12 @@ import streakImage from "../../public/streak.png";
 import { useState, useEffect } from "react";
 import supabase from "../config/supabase";
 import useHomeStore from "../context/store";
+import Loader from "../components/Loader";
 
 const Streak = () => {
   const { user } = useHomeStore();
-  const [streak, setStreak] = useState(0);
-  const [stats,setStats]=useState(null)
+  const [streak, setStreak] = useState(null);
+  const [stats, setStats] = useState(null);
   useEffect(() => {
     getStreak();
     getAttemptQuestions();
@@ -39,6 +40,10 @@ const Streak = () => {
     setStats(userStats);
   };
 
+  if (!streak || !stats) {
+    return <Loader />;
+  }
+
   return (
     <main className="h-full w-full flex px-2 flex-col">
       <section className="w-full flex flex-col justify-center items-center gap-3 py-8">
@@ -61,29 +66,30 @@ const Streak = () => {
       </section>
 
       {/* Bottom section */}
- <section className="w-full flex items-center justify-center">
-  <div className="flex flex-col items-center w-full justify-center py-4 bg-secondary rounded-md">
-    <h1 className="text-black font-semibold">Todays stats</h1>
+      <section className="w-full flex items-center justify-center">
+        <div className="flex flex-col items-center w-full justify-center py-4 bg-secondary rounded-md">
+          <h1 className="text-black font-semibold">Todays stats</h1>
 
-    <section className="flex gap-4 bg-bg p-4 rounded-md">
-      <div className="flex flex-col items-center">
-        <p className="text-gray-400">Days</p>
-        <h1 className="text-black font-bold">{streak?.streak_count || 0}</h1>
-      </div>
+          <section className="flex gap-4 bg-bg p-4 rounded-md">
+            <div className="flex flex-col items-center">
+              <p className="text-gray-400">Days</p>
+              <h1 className="text-black font-bold">
+                {streak?.streak_count || 0}
+              </h1>
+            </div>
 
-      <div className="flex flex-col items-center">
-        <p className="text-gray-400">Questions</p>
-        <h1 className="text-black font-bold">{stats?.total || 0}</h1>
-      </div>
+            <div className="flex flex-col items-center">
+              <p className="text-gray-400">Questions</p>
+              <h1 className="text-black font-bold">{stats?.total || 0}</h1>
+            </div>
 
-      <div className="flex flex-col items-center">
-        <p className="text-gray-400">Points</p>
-        <h1 className="text-black font-bold">{stats?.point || 0}</h1>
-      </div>
-    </section>
-  </div>
-</section>
-
+            <div className="flex flex-col items-center">
+              <p className="text-gray-400">Points</p>
+              <h1 className="text-black font-bold">{stats?.point || 0}</h1>
+            </div>
+          </section>
+        </div>
+      </section>
     </main>
   );
 };
