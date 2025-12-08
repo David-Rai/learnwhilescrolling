@@ -20,12 +20,16 @@ const Signup = () => {
     '/profiles/3.jpg',
     '/profiles/4.jpg',
     '/profiles/5.jpg',
+    '/profiles/6.jpg',
+    '/profiles/7.jpg',
+    '/profiles/8.jpg',
+    '/profiles/9.jpg',
   ];
   const randomAvatar = getRandomAvatar();
 
   //random images
   function getRandomAvatar() {
-    const num = Math.floor(Math.random() * 5) + 1; // generates 1 to 5
+    const num = Math.floor(Math.random() * 9) + 1; // generates 1 to 5
     return avatars[num];
   }
 
