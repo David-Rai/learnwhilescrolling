@@ -13,6 +13,7 @@ import Member from "./routes/admins/Member";
 import Dashboard from "./routes/admins/Dashboard.jsx";
 import Report from "./routes/Report";
 import GotoProfile from "./routes/GotoProfile";
+import EditProfile from "./routes/EditProfile";
 import Root from "./Root";
 import Feedback from "./routes/Feedback";
 import Reviews from "./routes/Reviews";
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
         path: "/explore",
         element: <Explore />,
       },
+      {
+        path:'/edit_profile',
+        element:<EditProfile />
+      }
       ,
       {
         path: "/streakleaderboard",

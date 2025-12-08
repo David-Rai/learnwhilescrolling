@@ -49,12 +49,10 @@ const Profile = () => {
   const [user, setUser] = useState(null);
   const [stats, setStats] = useState(null);
   const { user_id } = useParams();
-  const [loading, setLoading] = useState(true);
 
   //Fetching User data
   const fetchUserData = async () => {
     try {
-      setLoading(true);
       const { data, error } = await supabase
         .from("board")
         .select()
@@ -71,9 +69,7 @@ const Profile = () => {
       }
     } catch (err) {
       console.error("Error fetching user data:", err);
-    } finally {
-      setLoading(false);
-    }
+    } 
   };
 
   useEffect(() => {
@@ -151,12 +147,22 @@ const Profile = () => {
                     {user?.username || "Anonymous"}
                   </h2>
 
-                  {/* Rank */}
+                  {/* Edit profile */}
+                  <div 
+                  onClick={()=> navigate('/edit_profile',{state:{userProfile:user}})}
+                  className="flex items-center gap-2 bg-secondary border-2 border-gray-700 cursor-pointor px-3 my-2
+                  py-2 text-white rounded-md font-bold text-sm 
+                  md:text-base w-full flex items-center justify-center
+                  shadow-lg">
+                    <p>Edit profile</p>
+                  </div>
+
+                     {/* Rank */}
                   <div className="flex items-center gap-2 bg-primary px-3 py-2 text-white rounded-full font-bold text-sm md:text-base shadow-lg">
                     <span>🏆</span>
                     <span>Rank #{stats?.rank || "N/A"}</span>
                   </div>
-                    <i className="pt-2 text-gray-400">Give me your reports,suggestions</i>                  {/* NEW BUTTONS */}
+                    <i className="py-2 text-gray-400">Give me your reports,suggestions</i>                  {/* NEW BUTTONS */}
                   <div className="flex gap-3 t-2 ">
                     {/* Report Button */}
                     <button
@@ -188,6 +194,7 @@ const Profile = () => {
         </section>
       </div>
     </main>
+
   );
 };
 
