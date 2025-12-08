@@ -64,6 +64,7 @@ const Leaderboard = () => {
 
     {/* Leaders List */}
     <section className="px-4 mb-6">
+
       {/* Top Leader */}
       {rankedLeaders[0] && <TopLeader l={rankedLeaders[0]} rank={1} />}
 
