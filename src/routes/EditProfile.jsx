@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 import supabase from "../config/supabase";
+import { ArrowLeft, Camera } from "lucide-react";
+import { useNavigate } from "react-router";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import useHomeStore from "../context/store";
@@ -7,9 +9,9 @@ import useHomeStore from "../context/store";
 const EditProfile = () => {
   const { user } = useHomeStore();
   const [userProfile, setUserProfile] = useState(null);
-  // console.log("user", user);
-  const [userAvatar,setUserAvatar]=useState(userProfile?.avatar)
-
+  const [userAvatar, setUserAvatar] = useState(userProfile?.avatar);
+  const nameRef = useRef(null);
+  const navigate = useNavigate();
   //Fetching User data
   const fetchUserData = async () => {
     try {
@@ -26,7 +28,7 @@ const EditProfile = () => {
       if (data) {
         // console.log("Profile data", data);
         setUserProfile(data[0]);
-        setUserAvatar(data[0].avatar)
+        setUserAvatar(data[0].avatar);
       }
     } catch (err) {
       console.error("Error fetching user data:", err);
@@ -53,53 +55,83 @@ const EditProfile = () => {
 
   //random images
   function getRandomAvatar() {
-    const num = Math.floor(Math.random() * 9) + 1; // generates 1 to 5
+    const num = Math.floor(Math.random() * 8) + 1; // generates 1 to 5
     return avatars[num];
   }
 
-  const handleShow = () => {
+  const handleChange = () => {
     const randomAvatar = getRandomAvatar();
-    console.log(randomAvatar)
-    setUserAvatar(randomAvatar)
+    setUserAvatar(randomAvatar);
   };
 
+  const handleUpdate = async () => {
+    const user_id = user.id;
+    const name = nameRef.current.value;
+
+    if (!name) {
+      return;
+    }
+
+    if (!user_id) return;
+    const res = await supabase
+      .from("board")
+      .update({ username: name, avatar: userAvatar })
+      .eq("user_id", user_id);
+    navigate("/goto_profile");
+  };
   return (
-    <main className="h-full bg-bg flex flex-col items-center justify-center">
-      <header onClick={()=> navigate('/profile')}>
-        Back
+    <main className="min-h-dvh bg-bg flex flex-col items-center px-4 py-6">
+      {/* Header */}
+      <header
+        onClick={() => navigate("/profile")}
+        className="w-full max-w-xl flex items-center gap-2 text-text cursor-pointer mb-6"
+      >
+        <ArrowLeft className="w-5 h-5" />
+        <span className="font-medium">Back</span>
       </header>
-      <h1>Edit profile</h1>
+
+      <h1 className="text-2xl font-semibold text-text mb-6">Edit Profile</h1>
 
       {/* Main content */}
-      <section className="flex flex-col items-center gap-4">
+      <section className="w-full max-w-xl flex flex-col items-center gap-5">
         {/* Avatar */}
-        <div className="relative group">
-          <div className="absolute bg-primary rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity"></div>
-          <div
-            onClick={handleShow}
-            className="absolute bottom-0 left-0 z-20 cursor-pointor"
-          >
-            <h1>Change</h1>
-          </div>
+        <div className="relative group w-32 h-32 md:w-40 md:h-40">
           <img
             src={userAvatar}
             alt="Profile"
-            className="relative rounded-full w-32 h-32
-           md:w-40 md:h-40 object-cover border-4 border-[var(--color-primary)] shadow-xl"
+            className="rounded-full w-full h-full object-cover border-4 border-primary shadow-2xl"
           />
+
+          {/* Change Icon */}
+          <button
+            onClick={handleChange}
+            className="absolute bottom-2 right-2 bg-primary text-white p-2 rounded-full shadow-lg 
+                   flex items-center justify-center hover:scale-110 transition-transform"
+          >
+            <Camera className="w-5 h-5" />
+          </button>
         </div>
 
         {/* Name Field */}
-        <label htmlFor="name" className="text-text">
-          New name
+        <label htmlFor="name" className="text-text font-medium">
+          New Name
         </label>
         <input
           type="text"
           id="name"
-          className="input"
+          ref={nameRef}
           defaultValue={userProfile?.username}
+          className="input w-full max-w-sm"
         />
-        <button className="button w-auto bg-primary">Save Changes</button>
+
+        {/* Save Button */}
+        <button
+          onClick={handleUpdate}
+          className="button bg-primary text-white px-6  w-auto
+      py-2 rounded-xl font-medium shadow-lg hover:scale-[1.02] transition"
+        >
+          Save Changes
+        </button>
       </section>
     </main>
   );
