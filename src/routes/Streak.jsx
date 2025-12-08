@@ -66,7 +66,7 @@ const Streak = () => {
       </section>
 
       {/* Bottom section */}
-      <section className="w-full flex items-center justify-center">
+      <section className="w-full flex items-center justify-center px-6">
         <div className="flex flex-col items-center w-full justify-center py-4 bg-secondary rounded-md">
           <h1 className="text-black font-semibold">Todays stats</h1>
 
