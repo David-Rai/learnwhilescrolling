@@ -27,7 +27,7 @@ const Sidebar = () => {
   const menuItems = [
     { name: "home", icon: <FaHome />, label: "Home", path: "/" },
     { name: "explore", icon: <FaCompass />, label: "Explore", path: "/explore" },
-    { name: "leaderboard", icon: <FaChartLine />, label: "Leaderboard", path: "/leaderboard" },
+    { name: "leaderboard", icon: <FaChartLine />, label: "Leaderboard", path: "/streakleaderboard" },
     { name: "profile", icon: <FaUser />, label: "Profile", path: "/goto_profile" },
   ];
 
