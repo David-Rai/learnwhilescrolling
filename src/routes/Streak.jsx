@@ -44,6 +44,7 @@ const Streak = () => {
     return <Loader />;
   }
 
+
   return (
     <main className="h-full w-full flex px-2 flex-col">
       <section className="w-full flex flex-col justify-center items-center gap-3 py-8">

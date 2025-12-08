@@ -6,7 +6,7 @@ const MidLeader = memo(({ l, rank }) => {
   const navigate = useNavigate()
   const {user}=useHomeStore()
   const { username, points, total_questions, wrong_questions, user_id } = l
-  const isthisme=user_id === user.id
+  const isthisme=user_id === user?.id
   const right_questions = total_questions - wrong_questions
   const accuracy = total_questions === 0 ? 0 : ((right_questions / total_questions) * 100).toFixed(1)
 
