@@ -1,5 +1,6 @@
 import React from "react";
 import { getStats } from "../utils/getStats";
+import { useNavigate } from "react-router";
 import { checkUser } from "../utils/checkUser";
 import streakImage from "../../public/streak.png";
 import { useState, useEffect } from "react";
@@ -11,16 +12,22 @@ const Streak = () => {
   const { user } = useHomeStore();
   const [streak, setStreak] = useState(null);
   const [stats, setStats] = useState(null);
+  const navigate = useNavigate();
+
   useEffect(() => {
-    getStreak();
-    getAttemptQuestions();
+    getAll();
   }, []);
 
-  //Getting the streak from supabase
-  const getStreak = async () => {
+  const getAll = async () => {
     const res = await checkUser();
     if (!res.exist) return;
     const user_id = res.user.id;
+
+    getStreak(user_id);
+    getAttemptQuestions(user_id);
+  };
+  //Getting the streak from supabase
+  const getStreak = async (user_id) => {
     const { data, error } = await supabase
       .from("streaks")
       .select()
@@ -32,18 +39,24 @@ const Streak = () => {
   };
 
   //Get all attempts questions
-  const getAttemptQuestions = async () => {
-    const res = await checkUser();
-    if (!res.exist) return;
-    const user_id = res.user.id;
+  const getAttemptQuestions = async (user_id) => {
     const userStats = await getStats(user_id);
     setStats(userStats);
   };
 
+  if (!user) {
+    return (
+      <div>
+        <button 
+        onClick={()=> navigate("/signup")}
+        className="bg-primary w-auto py-2 px-4 rounded-md">Signup to see Streak</button>
+      </div>
+    );
+  }
+
   if (!streak || !stats) {
     return <Loader />;
   }
-
 
   return (
     <main className="h-full w-full flex px-2 flex-col">

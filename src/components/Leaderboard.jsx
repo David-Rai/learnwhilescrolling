@@ -2,7 +2,6 @@
 import { ChevronDown } from "lucide-react";
 import React, { useEffect } from "react";
 import supabase from "../config/supabase";
-import { Trophy } from "lucide-react";
 import { useLeaderStore } from "../context/store";
 import TopLeader from "./leaders/TopLeaders";
 import MidLeader from "./leaders/MidLeaders";
