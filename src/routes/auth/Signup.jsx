@@ -25,7 +25,9 @@ const Signup = () => {
     '/profiles/8.jpg',
     '/profiles/9.jpg',
   ];
+  //Fucntions to create the random avatar numbers
   const randomAvatar = getRandomAvatar();
+  
 
   //random images
   function getRandomAvatar() {
