@@ -1,5 +1,6 @@
 import { checkAnswer } from "./checkAnswer";
 import React, { useMemo } from "react";
+import { usePostHog } from '@posthog/react'
 import useHomeStore from "../context/store";
 
 const Question = ({ q, questionIndex, handleScroll }) => {
@@ -15,6 +16,7 @@ const Question = ({ q, questionIndex, handleScroll }) => {
   }, [q.id]);
 
   const handleAnswer = (question, opt) => {
+     posthog.capture('answered_question', { option: opt })
     checkAnswer(question, opt);
     handleScroll(questionIndex);
   };
