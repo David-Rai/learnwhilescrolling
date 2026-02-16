@@ -5,6 +5,7 @@ import useHomeStore from "../context/store";
 
 const Question = ({ q, questionIndex, handleScroll }) => {
   const { answers = [] } = useHomeStore();
+  const posthog = usePostHog()
 
   const shuffledOptions = useMemo(() => {
     const arr = [...q.options];
@@ -16,6 +17,7 @@ const Question = ({ q, questionIndex, handleScroll }) => {
   }, [q.id]);
 
   const handleAnswer = (question, opt) => {
+    console.log("Check the answers")
      posthog.capture('answered_question', { option: opt })
     checkAnswer(question, opt);
     handleScroll(questionIndex);
