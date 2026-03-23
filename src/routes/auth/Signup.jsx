@@ -273,7 +273,7 @@ const Signup = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-gradient-to-r from-indigo-600 to-indigo-700 text-white py-3 px-4 rounded-lg font-semibold text-sm hover:from-indigo-700 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98]"
+                  className="w-full bg-primary text-white py-3 px-4 rounded-lg font-semibold text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98]"
                 >
                   {isSubmitting ? (
                     <div className="flex items-center justify-center">
@@ -320,8 +320,8 @@ const Signup = () => {
                   Have an account?{' '}
                   <button
                     onClick={() => navigate('/signin')}
-                    className="text-indigo-600 font-semibold
-               hover:text-indigo-800 transition-colors
+                    className="text-primary-600 font-semibold
+               transition-colors
                 duration-200 underline underline-offset-2"
                   >
                     Log in

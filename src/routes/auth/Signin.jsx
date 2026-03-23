@@ -79,7 +79,7 @@ const Signin = () => {
                 <input
                   type="email"
                   placeholder="Email"
-                  className={`w-full pl-10 pr-3 py-3 border rounded-lg bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 ${errors.email ? 'border-red-500' : 'border-gray-200'
+                  className={`w-full pl-10 pr-3 py-3 border rounded-lg bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 ${errors.email ? 'border-red-500' : 'border-gray-200'
                     }`}
                   {...register('email', {
                     required: 'Email is required',
@@ -102,7 +102,7 @@ const Signin = () => {
                 <input
                   type={showPassword ? 'text' : 'password'}
                   placeholder="Password"
-                  className={`w-full pl-10 pr-10 py-3 border rounded-lg bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200 ${errors.password ? 'border-red-500' : 'border-gray-200'
+                  className={`w-full pl-10 pr-10 py-3 border rounded-lg bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-primarys-500 focus:border-transparent transition-all duration-200 ${errors.password ? 'border-red-500' : 'border-gray-200'
                     }`}
                   {...register('password', {
                     required: 'Password is required',
@@ -132,7 +132,7 @@ const Signin = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-indigo-600 to-indigo-700 text-white py-3 px-4 rounded-lg font-semibold text-sm hover:from-indigo-700 hover:to-indigo-800 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98]"
+                className="w-full bg-primary text-white py-3 px-4 rounded-lg font-semibold text-sm hover:from-primary-700 hover:to-primary-800 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98]"
               >
                 {isSubmitting ? (
                   <div className="flex items-center justify-center">
@@ -159,7 +159,7 @@ const Signin = () => {
                 {/* Google Login */}
                 <button
                   type="button"
-                  className="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-200 transform hover:scale-[1.01]"
+                  className="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-all duration-200 transform hover:scale-[1.01]"
                   onClick={handleGoogleLogin}
                 >
                   <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
@@ -180,8 +180,8 @@ const Signin = () => {
                 Don't have an account?{' '}
                 <button
                   onClick={() => navigate('/signup')}
-                  className="text-indigo-600 font-semibold
-               hover:text-indigo-800 transition-colors
+                  className="text-primary-600 font-semibold
+               hover:text-primary-800 transition-colors
                 duration-200 underline underline-offset-2"
                 >
                   Sign up

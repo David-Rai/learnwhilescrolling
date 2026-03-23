@@ -8,7 +8,7 @@ import supabase from "../config/supabase.js";
 import AllCategories from "../components/AllCategories.jsx";
 
 const NewExplore = () => {
-  const {currentClass}=useClassStore()
+  const { currentClass } = useClassStore();
   const { allClasses, setClasses } = useClassStore();
 
   const [searchTerm, setSearchTerm] = useState(""); // state for search
@@ -23,32 +23,30 @@ const NewExplore = () => {
   //Fetching all classes
   const getAllClasses = async () => {
     // const {data,error} = await supabase.from("class").select().order('type',{assending:true})
-    const {data,error} = await supabase.from("class").select().eq('type','b')
+    const { data, error } = await supabase
+      .from("class")
+      .select()
+      .eq("type", "b");
 
-    if(error){
-      return setClasses([])
+    if (error) {
+      return setClasses([]);
     }
-    setClasses(data)
+    setClasses(data);
     // console.log("All classes",data);
   };
-
-
 
   //Filtering the classes on search parameters
   const filteredClasses = useMemo(() => {
     return allClasses.filter((c) =>
-      c.name?.toLowerCase().includes(searchTerm.toLowerCase())
+      c.name?.toLowerCase().includes(searchTerm.toLowerCase()),
     );
   }, [allClasses, searchTerm]);
 
-
   return (
     <main className="h-full bg-bg w-full flex flex-col overflow-hidden">
-      {
-         currentClass.isSelected ? 
-          (<AllCategories/>)
-          :
-          (
+      {currentClass.isSelected ? (
+        <AllCategories />
+      ) : (
         <div className="h-full flex flex-col overflow-hidden">
           {/* Search Bar */}
           <header className="flex-shrink-0 bg-secondary px-4 py-4 md:py-6 shadow-lg">
@@ -58,7 +56,10 @@ const NewExplore = () => {
                 placeholder="Search class..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-3 md:py-4 rounded-2xl border-b-4 border-gray-700 text-white bg-bg focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary transition-all text-base md:text-lg font-medium"
+                className="w-full px-4 py-3 md:py-4 rounded-2xl border-b-4
+                 border-gray-700 text-white bg-bg focus:outline-none 
+                 focus:border-primary focus:ring-2 focus:ring-primary 
+                 transition-all text-base md:text-lg font-medium"
               />
             </div>
           </header>
@@ -80,7 +81,7 @@ const NewExplore = () => {
             </div>
           </section>
         </div>
-        )}
+      )}
 
       <ToastContainer autoClose={200} />
     </main>
