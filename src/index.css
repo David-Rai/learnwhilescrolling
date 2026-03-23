@@ -1,182 +1,188 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;600;700&display=swap");
 @import "tailwindcss";
 
 body {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
-    line-height: 1.6;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
 }
 /* CSS */
 .rootLayout {
-    overflow: hidden !important;
-  }
-  
+  overflow: hidden !important;
+}
+
 h1,
 h2 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: #ffffff;
 }
 
 h3,
 h4 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    color: #fafafa;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #fafafa;
 }
 
 button,
 .btn {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    letter-spacing: 0.5px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 p {
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
 }
 
 small,
 .secondary {
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
-    color: #a1a1a1;
+  font-family: "Inter", sans-serif;
+  font-weight: 300;
+  color: #a1a1a1;
 }
 
 :root {
-    --bg: #000000;
-    /* --bg: oklch(12.9% 0.042 264.695); */
-    --text: #FFFFFF;
-    --right: #48FF00;
-    --wrong: #FF385A;
-    --secondary: oklch(20.8% 0.042 265.755);
-    --primary: oklch(58.5% 0.233 277.117);
-    /* --primary: oklch(78.801% 0.13941 52.981); */
+  --bg: #000000;
+  /* --bg: oklch(12.9% 0.042 264.695); */
+  --text: #ffffff;
+  --right: #48ff00;
+  --wrong: #ff385a;
+  --secondary: oklch(20.8% 0.042 265.755);
+  /* --primary: oklch(58.5% 0.233 277.117); */
+  /* --primary: #00ffb2; */
+  /* --primary: #c8ff00; */
+  /* --primary: #FF3366; */
+  /* --primary:#00D4C8; */
+  --primary:#A8D900;
+  /* --primary:#00D994; */
+  /* --primary: oklch(78.801% 0.13941 52.981); */
 }
 
 @theme {
-    --color-bg: var(--bg);
-    --color-text: var(--text);
-    --color-right: var(--right);
-    --color-wrong: var(--wrong);
-    --color-secondary: var(--secondary);
-    --color-primary: var(--primary);
+  --color-bg: var(--bg);
+  --color-text: var(--text);
+  --color-right: var(--right);
+  --color-wrong: var(--wrong);
+  --color-secondary: var(--secondary);
+  --color-primary: var(--primary);
 }
 
 @layer components {
-    .option-button {
-        @apply bg-text text-bg sm:px-5 py-4 cursor-pointer rounded-2xl font-bold text-sm sm:text-base w-full max-w-xs sm:max-w-full transition-all duration-100 ease-out border-b-4 border-gray-300 active:border-b-0 active:translate-y-1 hover:brightness-105;
-    }
+  .option-button {
+    @apply bg-text text-bg sm:px-5 py-4 cursor-pointer rounded-2xl font-bold text-sm sm:text-base w-full max-w-xs sm:max-w-full transition-all duration-100 ease-out border-b-4 border-gray-300 active:border-b-0 active:translate-y-1 hover:brightness-105;
+  }
 
-    .button {
-        @apply h-[40px] w-[120px] rounded-md bg-secondary text-text py-1 px-3 font-light
-    }
-    .input{
-        @apply border-bg border-1 p-2 rounded-md placeholder-gray-400 text-bg bg-text w-full
-    }
+  .button {
+    @apply h-[40px] w-[120px] rounded-md bg-secondary text-text py-1 px-3 font-light;
+  }
+  .input {
+    @apply border-bg border-1 p-2 rounded-md placeholder-gray-400 text-bg bg-text w-full;
+  }
 
-    .option-button.bg-right {
-        @apply border-green-600;
-    }
+  .option-button.bg-right {
+    @apply border-green-600;
+  }
 
-    .option-button.bg-wrong {
-        @apply border-red-700;
-    }
+  .option-button.bg-wrong {
+    @apply border-red-700;
+  }
 
-    .option-button.bg-primary {
-        @apply border-purple-700;
-    }
+  .option-button.bg-primary {
+    @apply border-purple-700;
+  }
 
-    .option-button:active {
-        @apply scale-95 bg-gray-300;
-        /* slight shrink + color change on click */
-    }
-/* 
+  .option-button:active {
+    @apply scale-95 bg-gray-300;
+    /* slight shrink + color change on click */
+  }
+  /* 
     .home {
         @apply w-full bg-bg text-gray-800 dark:text-gray-100 overflow-hidden flex flex-col
     } */
 
-    /* .main {
+  /* .main {
         @apply w-full bg-bg text-gray-800 dark:text-gray-100 overflow-hidden flex flex-col
     } */
 
-    .question-container {
-        @apply relative h-full flex flex-col w-full justify-center items-center
-    }
+  .question-container {
+    @apply relative h-full flex flex-col w-full justify-center items-center;
+  }
 
-    .question-text {
-        @apply text-lg sm:text-xl md:text-2xl font-bold mb-6 
+  .question-text {
+    @apply text-lg sm:text-xl md:text-2xl font-bold mb-6 
         text-center text-text drop-shadow-lg w-[90%] 
         sm:w-[80%] md:w-[70%] lg:w-[60%] max-w-3xl;
-    }   
+  }
 
-    .social-contain {
-        @apply bg-secondary backdrop-blur-sm p-3 cursor-pointer rounded-full transition-all mb-1
-    }
-    .classchild{
-        @apply    relative flex flex-row sm:flex-col items-center sm:justify-between 
+  .social-contain {
+    @apply bg-secondary backdrop-blur-sm p-3 cursor-pointer rounded-full transition-all mb-1;
+  }
+  .classchild {
+    @apply relative flex flex-row sm:flex-col items-center sm:justify-between 
                  p-4 sm:p-5 md:p-6 lg:p-7 rounded-2xl cursor-pointer 
                  h-auto sm:h-60 md:h-64 lg:h-72 w-full md:w-1/3
                  backdrop-blur-xl border border-white/20 bg-white/10 text-text
                  hover:bg-white/20 hover:border-primary/50 hover:shadow-[0_0_25px_var(--color-primary)] hover:shadow-primary/20
-                 transition-all duration-300 ease-out sm:hover:-translate-y-2 overflow-hidden bg-white/10
-    }
-    .a-classchild{
-        @apply relative flex flex-row sm:flex-col items-center sm:justify-between 
+                 transition-all duration-300 ease-out sm:hover:-translate-y-2 overflow-hidden bg-white/10;
+  }
+  .a-classchild {
+    @apply relative flex flex-row sm:flex-col items-center sm:justify-between 
                  p-4 sm:p-5 md:p-6 lg:p-7 rounded-2xl cursor-pointer 
                  h-auto sm:h-60 md:h-64 lg:h-72 w-full md:w-1/3
                  backdrop-blur-xl border border-white/20
                  hover:bg-white/20 hover:border-primary/50 hover:shadow-[0_0_25px_var(--color-primary)] hover:shadow-primary/20
-                 transition-all duration-300 ease-out sm:hover:-translate-y-2 overflow-hidden
-    }
+                 transition-all duration-300 ease-out sm:hover:-translate-y-2 overflow-hidden;
+  }
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-    background: var(--primary);
-    /* secondary */
-    border-radius: 4px;
+  background: var(--primary);
+  /* secondary */
+  border-radius: 4px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    /* primary */
-    border-radius: 4px;
+  background: var(--primary);
+  /* primary */
+  border-radius: 4px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: var(--primary);
+  background: var(--primary);
 }
 
 .custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary) oklch(20.8% 0.042 265.755);
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) oklch(20.8% 0.042 265.755);
 }
 
 @keyframes countUp {
-    from {
-        opacity: 0;
-        transform: translateY(10px) scale(0.8);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.8);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @keyframes fadeSlideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-20px);
-    }
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
