@@ -10,7 +10,7 @@ const links = [
 const StreakLeaderboard = () => {
   return (
     <>
-      <main className=" bg-bg h-[calc(100%-80px)] bg-bg text-text flex flex-col items-center">
+      <main className=" h-[calc(100%-80px)] bg-bg text-text flex flex-col items-center">
         <header
           className="flex gap-4 py-2 px-5 md:px-0 mx-2 my-4 items-center justify-evenly
             rounded-full bg-secondary md:w-1/2"
