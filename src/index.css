@@ -1,33 +1,36 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@400;600;700&display=swap");
 @import "tailwindcss";
 
 body {
   font-family: "Inter", sans-serif;
   font-weight: 400;
   line-height: 1.6;
+  background-color: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
 }
-/* CSS */
+
 .rootLayout {
   overflow: hidden !important;
 }
 
 h1,
 h2 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--text);
 }
 
 h3,
 h4 {
-  font-family: "Poppins", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-weight: 600;
-  color: #fafafa;
+  color: var(--text);
 }
 
 button,
 .btn {
-  font-family: "Poppins", sans-serif;
+  font-family: "Outfit", sans-serif;
   font-weight: 600;
   letter-spacing: 0.5px;
 }
@@ -41,27 +44,26 @@ small,
 .secondary {
   font-family: "Inter", sans-serif;
   font-weight: 300;
-  color: #a1a1a1;
+  color: #9ca3af;
+  /* Tailwind gray-400 */
 }
 
+/* Premium SaaS Dark Palette */
 :root {
-  --bg: #000000;
-  /* --bg: oklch(12.9% 0.042 264.695); */
+  --bg: #09090b;
+  /* Very dark zinc */
+  --bg-gradient: linear-gradient(180deg, #09090b 0%, #171720 100%);
   --text: #ffffff;
-  --right: #48ff00;
-  /* --right: #22c55e;   */
-  --wrong: #ff385a;
-  /* --secondary: oklch(20.8% 0.042 265.755); */
-  /* --secondary:#181818; */
-  --secondary:rgb(22, 22, 22);
-  /* --primary: oklch(58.5% 0.233 277.117); */
-  /* --primary: #00ffb2; */
-  /* --primary: #c8ff00; */
-  /* --primary: #FF3366; */
-  /* --primary:#00D4C8; */
-  --primary:#A8D900;
-  /* --primary:#00D994; */
-  /* --primary: oklch(78.801% 0.13941 52.981); */
+  --right: #10B981;
+  /* Emerald 500 */
+  --wrong: #EF4444;
+  /* Red 500 */
+  --secondary: #18181b;
+  /* Zinc 900 */
+  --secondary-border: rgba(255, 255, 255, 0.1);
+  --primary: #8b5cf6;
+  /* Violet 500 */
+  --primary-glow: rgba(139, 92, 246, 0.4);
 }
 
 @theme {
@@ -74,96 +76,99 @@ small,
 }
 
 @layer components {
+
+  /* Homepage Question Option Button - Premium Glassmorphic */
   .option-button {
-    @apply bg-text text-bg sm:px-5 py-4 cursor-pointer rounded-2xl font-bold text-sm sm:text-base w-full max-w-xs sm:max-w-full transition-all duration-100 ease-out border-b-4 border-gray-300 active:border-b-0 active:translate-y-1 hover:brightness-105;
+    @apply relative flex items-center justify-center p-4 cursor-pointer rounded-xl font-semibold text-sm sm:text-base w-full transition-all duration-300 ease-out border overflow-hidden;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border-color: var(--secondary-border);
+    color: var(--text);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
 
-  .button {
-    @apply h-[40px] w-[120px] rounded-md bg-secondary text-text py-1 px-3 font-light;
-  }
-  .input {
-    @apply border-bg border-1 p-2 rounded-md placeholder-gray-400 text-bg bg-text w-full;
+  .option-button:hover:not(:disabled) {
+    @apply -translate-y-1;
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
   }
 
+  .option-button:active:not(:disabled) {
+    @apply translate-y-0 scale-95;
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  /* State Classes for option buttons */
   .option-button.bg-right {
-    @apply border-green-600;
+    @apply border-green-500/50 bg-green-500/20 text-white;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
   }
 
   .option-button.bg-wrong {
-    @apply border-red-700;
+    @apply border-red-500/50 bg-red-500/20 text-white;
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
   }
 
   .option-button.bg-primary {
-    @apply border-purple-700;
+    @apply border-purple-500/50 bg-purple-500/20 text-white;
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
   }
 
-  .option-button:active {
-    @apply scale-95 bg-gray-300;
-    /* slight shrink + color change on click */
+  /* Disabled non-selected options */
+  .option-button:disabled:not(.bg-right):not(.bg-wrong) {
+    @apply opacity-50 cursor-not-allowed scale-100 translate-y-0;
   }
-  /* 
-    .home {
-        @apply w-full bg-bg text-gray-800 dark:text-gray-100 overflow-hidden flex flex-col
-    } */
 
-  /* .main {
-        @apply w-full bg-bg text-gray-800 dark:text-gray-100 overflow-hidden flex flex-col
-    } */
+  .button {
+    @apply h-[40px] px-5 rounded-lg bg-[var(--primary)] text-white font-medium hover:brightness-110 active:scale-95 transition-all shadow-lg;
+  }
+
+  .input {
+    @apply border border-white/10 p-3 rounded-xl placeholder-gray-500 text-white bg-white/5 w-full focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all;
+  }
 
   .question-container {
     @apply relative h-full flex flex-col w-full justify-center items-center;
   }
 
   .question-text {
-    @apply text-lg sm:text-xl md:text-2xl font-bold mb-6 
-        text-center text-text drop-shadow-lg w-[90%] 
-        sm:w-[80%] md:w-[70%] lg:w-[60%] max-w-3xl;
+    @apply text-xl sm:text-2xl md:text-3xl font-bold mb-10 text-center text-text drop-shadow-xl w-[90%] sm:w-[85%] md:w-[75%] lg:w-[65%] max-w-4xl tracking-tight leading-snug;
   }
 
   .social-contain {
-    @apply bg-secondary backdrop-blur-sm p-3 cursor-pointer rounded-full transition-all mb-1;
+    @apply bg-black/30 border border-white/10 backdrop-blur-md p-3 cursor-pointer rounded-full transition-all hover:bg-black/50 hover:scale-110 mb-2 shadow-lg;
   }
+
   .classchild {
-    @apply relative flex flex-row sm:flex-col items-center sm:justify-between 
-                 p-4 sm:p-5 md:p-6 lg:p-7 rounded-2xl cursor-pointer 
-                 h-auto sm:h-60 md:h-64 lg:h-72 w-full md:w-1/3
-                 backdrop-blur-xl border border-white/20  text-text
-                 hover:bg-white/20 hover:border-primary/50 hover:shadow-[0_0_25px_var(--color-primary)] hover:shadow-primary/20
-                 transition-all duration-300 ease-out sm:hover:-translate-y-2 overflow-hidden bg-white/10;
+    @apply relative flex flex-row sm:flex-col items-center sm:justify-between p-5 md:p-7 rounded-3xl cursor-pointer h-auto sm:h-64 md:h-72 w-full md:w-1/3 backdrop-blur-xl border border-white/10 text-text hover:bg-white/5 hover:border-[var(--primary)] hover:shadow-[0_0_30px_var(--primary-glow)] transition-all duration-300 ease-out sm:hover:-translate-y-2 overflow-hidden bg-[#16161a]/60;
   }
+
   .a-classchild {
-    @apply relative flex flex-row sm:flex-col items-center sm:justify-between 
-                 p-4 sm:p-5 md:p-6 lg:p-7 rounded-2xl cursor-pointer 
-                 h-auto sm:h-60 md:h-64 lg:h-72 w-full md:w-1/3
-                 backdrop-blur-xl border border-white/20
-                 hover:bg-white/20 hover:border-primary/50 hover:shadow-[0_0_25px_var(--color-primary)] hover:shadow-primary/20
-                 transition-all duration-300 ease-out sm:hover:-translate-y-2 overflow-hidden;
+    @apply relative flex flex-row sm:flex-col items-center sm:justify-between p-5 md:p-7 rounded-3xl cursor-pointer h-auto sm:h-64 md:h-72 w-full md:w-1/3 backdrop-blur-xl border border-white/10 hover:bg-white/5 hover:border-[var(--primary)] hover:shadow-[0_0_30px_var(--primary-glow)] transition-all duration-300 ease-out sm:hover:-translate-y-2 overflow-hidden bg-black/40;
   }
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: var(--primary);
-  /* secondary */
-  border-radius: 4px;
+  background: transparent;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  /* primary */
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
+  background: rgba(255, 255, 255, 0.4);
 }
 
 .custom-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: var(--primary) oklch(20.8% 0.042 265.755);
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 }
 
 @keyframes countUp {
@@ -181,11 +186,39 @@ small,
 @keyframes fadeSlideIn {
   from {
     opacity: 0;
-    transform: translateX(-20px);
+    transform: translateY(20px);
   }
 
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
   }
 }

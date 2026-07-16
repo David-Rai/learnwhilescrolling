@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
+import useHomeStore from "../context/store";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router";
 import supabase from "../config/supabase";
@@ -45,7 +46,8 @@ const StatBar = React.memo(({ label, value, max = 100, type, delay = 0 }) => {
 });
 
 const Profile = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate()
+  const { user: currentUser } = useHomeStore();
   const [user, setUser] = useState(null);
   const [stats, setStats] = useState(null);
   const { user_id } = useParams();
@@ -69,7 +71,7 @@ const Profile = () => {
       }
     } catch (err) {
       console.error("Error fetching user data:", err);
-    } 
+    }
   };
 
   useEffect(() => {
@@ -113,12 +115,12 @@ const Profile = () => {
       delay: 500,
     },
   ];
-  
-  const handleReport=()=>{
- navigate("/report")
+
+  const handleReport = () => {
+    navigate("/report")
   }
-  const handleFeedback=()=>{
-   navigate('/feedback')
+  const handleFeedback = () => {
+    navigate('/feedback')
   }
 
   return !user?.id ? (
@@ -148,21 +150,23 @@ const Profile = () => {
                   </h2>
 
                   {/* Edit profile */}
-                  <div 
-                  onClick={()=> navigate('/edit_profile',{state:{userProfile:user}})}
-                  className="flex items-center gap-2 bg-secondary border-2 border-gray-700 cursor-pointor px-3 my-2
-                  py-2 text-white rounded-md font-bold text-sm 
-                  md:text-base w-full flex items-center justify-center
-                  shadow-lg">
-                    <p>Edit profile</p>
-                  </div>
+                  {currentUser?.id === user?.user_id && (
+                    <div
+                      onClick={() => navigate('/edit_profile', { state: { userProfile: user } })}
+                      className="flex items-center gap-2 bg-[var(--color-secondary)] hover:bg-[var(--color-primary)] transition-all duration-300 border border-gray-700/50 hover:border-transparent cursor-pointer px-4 my-2
+                    py-2.5 text-white rounded-xl font-semibold text-sm 
+                    md:text-base w-full flex items-center justify-center
+                    shadow-lg hover:shadow-[0_0_15px_rgba(168,85,247,0.4)]">
+                      <p>Edit profile</p>
+                    </div>
+                  )}
 
-                     {/* Rank */}
+                  {/* Rank */}
                   <div className="flex items-center gap-2 bg-primary px-3 py-2 text-white rounded-full font-bold text-sm md:text-base shadow-lg">
                     <span>🏆</span>
                     <span>Rank #{stats?.rank || "N/A"}</span>
                   </div>
-                    <i className="py-2 text-gray-400">Give me your reports,suggestions</i>                  {/* NEW BUTTONS */}
+                  <i className="py-2 text-gray-400">Give me your reports,suggestions</i>                  {/* NEW BUTTONS */}
                   <div className="flex gap-3 t-2 ">
                     {/* Report Button */}
                     <button
